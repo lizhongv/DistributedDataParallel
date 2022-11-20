@@ -16,10 +16,10 @@ if torch.cuda.is_available():
 **方法二**
 ```python
 # 分配到的GPU或CPU
-device=torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 # 将模型加到GPU
-model=model.to(device)
+model = model.to(device)
 # 将张量加到GPU
-x=x.to(device)
-y=y.to(device)
+x = x.to(device)
+y = y.to(device)
 ```
