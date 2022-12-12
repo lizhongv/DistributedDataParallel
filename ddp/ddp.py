@@ -2,7 +2,8 @@
 # -*- coding:utf-8 -*-
 """
 @Email: zl2272001@gmail.com
-@Time: 2022/11/4
+@Date: 2022/11/4
+@Author: lizhong
 @target: Using DDP model to train data, using torch.distributed.launch to start multi-process...
 """
 
