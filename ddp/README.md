@@ -8,4 +8,4 @@
 ## torch.cuda.set_device
 [API](https://pytorch.org/docs/stable/_modules/torch/cuda.html#set_device)
 
-## 
+##  torch.distributed.barrier()
