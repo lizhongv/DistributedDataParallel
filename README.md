@@ -23,3 +23,5 @@ model = model.to(device)
 x = x.to(device)
 y = y.to(device)
 ```
+
+<div align=left><img src="https://user-images.githubusercontent.com/49021250/230571742-ff2e2223-bb4f-4e1e-8100-942b8ee6b1d5.png" width="50%" height="50%"></div>
