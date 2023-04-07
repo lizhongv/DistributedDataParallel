@@ -20,9 +20,11 @@ WORLD_SIZE = os.environ["WORLD_SIZE"]
 print("MASTER_ADDR: {}\tMASTER_PORT: {}".format(MASTER_ADDR, MASTER_PORT))
 print("LOCAL_RANK: {}\tRANK: {}\tWORLD_SIZE: {}".format(LOCAL_RANK, RANK, WORLD_SIZE))
  
-dist.init_process_group('nccl',)
+dist.init_process_group('nccl')
+rank = dist.get_rank()
+print(f"rank={rank}")
 print("after running dist.init_process_group()")
-time.sleep(20)  # Sleep for a while to avoid exceptions that occur when some processes end too quickly.
+time.sleep(5)  # Sleep for a while to avoid exceptions that occur when some processes end too quickly.
 dist.destroy_process_group()
 
 
