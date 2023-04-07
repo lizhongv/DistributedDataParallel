@@ -11,8 +11,11 @@ import time
 import torch.distributed as dist
  
 print("before running dist.init_process_group()")
+
+
 MASTER_ADDR = os.environ["MASTER_ADDR"]
 MASTER_PORT = os.environ["MASTER_PORT"]
+
 LOCAL_RANK = os.environ["LOCAL_RANK"]
 RANK = os.environ["RANK"]
 WORLD_SIZE = os.environ["WORLD_SIZE"]
@@ -29,6 +32,6 @@ dist.destroy_process_group()
 
 
 
-# CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 --MASTER_PORT=40895  testlaunch.py
+# CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4  testlaunch.py
 
 # CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4  testlaunch.py
