@@ -1,3 +1,25 @@
+## local_rank
+> 单进程会设置进程号为 `-1`，总之当 `local_rank=-1/0` 可以认为主进程
+> 多进程处理数据时让其他进程全部停下来
+
+```python
+from contextlib import contextmanager
+
+@contextmanager
+def torch_distributed_zero_first(local_rank: int):
+    # Decorator to make all processes in distributed training wait for each local_master to do something 确保分布式训练中主进程完毕
+    if local_rank not in [-1, 0]:  # 当前进程是否为主进程
+        # 不是就让pytorch对它进行阻塞，也就是暂停运行
+        torch.distributed.barrier(device_ids=[local_rank])
+    yield  # 如果他是主进程，他就暂时跳出函数执行其他任务
+    if local_rank == 0: # 此时主进程完成了其他任务进入了第二个if函数
+        # 然后它也进入barrier（）函数里面
+         torch.distributed.barrier(device_ids=[0])
+# 当pytorch发现所有的进程都进入了barrier（），就会打开所有的barrier，所有的进程都可以继续进行。
+```
+[关于torch.distributed.barrier()的作用](https://blog.csdn.net/REstrat/article/details/126881877?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-126881877-blog-109820870.235%5Ev28%5Epc_relevant_t0_download&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-126881877-blog-109820870.235%5Ev28%5Epc_relevant_t0_download&utm_relevant_index=2)
+
+
 ## DistributedDataParallel
 this a simple dataparallel python application
 
