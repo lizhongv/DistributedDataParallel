@@ -1,3 +1,4 @@
+```python
 batch_size 要大于GPU数量
 device_ids
 
@@ -9,6 +10,7 @@ torch.nn.DataParallel(model, device_ids=[arg.local_rank], output_device=arg.loca
 > 注意：s.environ[“CUDA_VISIBLE_DEVICES”] = “ ”  一定要和 device_ids 一致，且第一个为主卡，output_device 输出到主卡
 > 或者上面都不写，默认使用全部GPU 
 
+
 保存模型：
 torch.save(net.module.state_dict(), path)
 
@@ -19,3 +21,4 @@ net=net.module
 
 优化器使用：
 optimizer.step() --> optimizer.module.step()
+```
