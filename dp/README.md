@@ -1,4 +1,6 @@
 
+# torch.nn.DataParallel(model)
+
 保存模型：
 torch.save(net.module.state_dict(), path)
 
