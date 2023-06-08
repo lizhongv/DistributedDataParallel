@@ -7,6 +7,9 @@
 @target: Create multi-process through torch.multiprocessing.spawn and wrap it with DDP
 """
 
+
+
+```python
 import os
 import sys
 import tempfile
@@ -90,3 +93,4 @@ if __name__ == "__main__":
     run_demo(demo_basic, world_size)
     # run_demo(demo_checkpoint, world_size)
     # run_demo(demo_model_parallel, world_size)
+```
